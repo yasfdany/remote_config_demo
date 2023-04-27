@@ -59,8 +59,14 @@ class _AppState extends State<App> {
         minimumFetchInterval: Duration.zero,
       ),
     );
-    await Future.delayed(const Duration(seconds: 5));
-    await remoteConfig.fetchAndActivate();
+
+    // Mengaktifkan konfigurasi sebelumnya sudah di fetch
+    await remoteConfig.activate();
     setState(() {});
+
+    // Secara asynchronous fetch konfigurasi baru tanpa mengaktifkan konfigurasi
+    remoteConfig.fetch().then((value) {
+      debugPrint('Fetch Done');
+    });
   }
 }
