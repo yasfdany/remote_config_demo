@@ -44,10 +44,10 @@ class _AppState extends State<App> {
   }
 
   void initRemoteConfig() async {
-    remoteConfig.onConfigUpdated.listen((event) async {
-      await remoteConfig.activate();
-      setState(() {});
-    });
+    // remoteConfig.onConfigUpdated.listen((event) async {
+    //   await remoteConfig.activate();
+    //   setState(() {});
+    // });
 
     await remoteConfig.ensureInitialized();
     await remoteConfig.setConfigSettings(
@@ -59,6 +59,7 @@ class _AppState extends State<App> {
         minimumFetchInterval: Duration.zero,
       ),
     );
+    await Future.delayed(const Duration(seconds: 5));
     await remoteConfig.fetchAndActivate();
   }
 }
