@@ -61,5 +61,6 @@ class _AppState extends State<App> {
     );
     await Future.delayed(const Duration(seconds: 5));
     await remoteConfig.fetchAndActivate();
+    setState(() {});
   }
 }
