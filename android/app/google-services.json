@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "902545858469",
+    "project_id": "remote-config-demo-87574",
+    "storage_bucket": "remote-config-demo-87574.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902545858469:android:610b1f52032e5eae4f924c",
+        "android_client_info": {
+          "package_name": "com.example.remote_config_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902545858469-q3u95sflc6c0dips784lb61d0uvit4mv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr7WthkkEHSy87rAg9chCHDpdkceHobjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902545858469-q3u95sflc6c0dips784lb61d0uvit4mv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
