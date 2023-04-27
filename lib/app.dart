@@ -62,11 +62,13 @@ class _AppState extends State<App> {
         minimumFetchInterval: Duration.zero,
       ),
     );
+    // Memulai loading
     setState(() {
       loading = true;
     });
     await Future.delayed(const Duration(seconds: 5));
     await remoteConfig.fetchAndActivate();
+    // Menyembunyikan loading ketika proses fetching selesai
     setState(() {
       loading = false;
     });
