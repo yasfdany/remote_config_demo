@@ -10,6 +10,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+  bool loading = false;
 
   @override
   void initState() {
@@ -26,28 +27,30 @@ class _AppState extends State<App> {
         title: const Text('Remote Config Demo'),
       ),
       body: Center(
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          margin: EdgeInsets.only(top: isAlredyEid ? 0 : 120),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: isAlredyEid ? Colors.green : Colors.blue,
-            ),
-            child: Text(
-              isAlredyEid ? 'Happy Eid Mubarrak' : 'Happy Fasting',
-            ),
-          ),
-        ),
+        child: loading
+            ? const CircularProgressIndicator()
+            : AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                margin: EdgeInsets.only(top: isAlredyEid ? 0 : 120),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: isAlredyEid ? Colors.green : Colors.blue,
+                  ),
+                  child: Text(
+                    isAlredyEid ? 'Happy Eid Mubarrak' : 'Happy Fasting',
+                  ),
+                ),
+              ),
       ),
     );
   }
 
   void initRemoteConfig() async {
-    remoteConfig.onConfigUpdated.listen((event) async {
-      await remoteConfig.activate();
-      setState(() {});
-    });
+    // remoteConfig.onConfigUpdated.listen((event) async {
+    //   await remoteConfig.activate();
+    //   setState(() {});
+    // });
 
     await remoteConfig.ensureInitialized();
     await remoteConfig.setConfigSettings(
@@ -59,6 +62,13 @@ class _AppState extends State<App> {
         minimumFetchInterval: Duration.zero,
       ),
     );
+    setState(() {
+      loading = true;
+    });
+    await Future.delayed(const Duration(seconds: 5));
     await remoteConfig.fetchAndActivate();
+    setState(() {
+      loading = false;
+    });
   }
 }
