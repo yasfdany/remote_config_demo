@@ -26,13 +26,17 @@ class _AppState extends State<App> {
         title: const Text('Remote Config Demo'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            backgroundColor: isAlredyEid ? Colors.green : Colors.blue,
-          ),
-          child: Text(
-            isAlredyEid ? 'Happy Eid Mubarrak' : 'Happy Fasting',
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          margin: EdgeInsets.only(top: isAlredyEid ? 0 : 120),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: isAlredyEid ? Colors.green : Colors.blue,
+            ),
+            child: Text(
+              isAlredyEid ? 'Happy Eid Mubarrak' : 'Happy Fasting',
+            ),
           ),
         ),
       ),
